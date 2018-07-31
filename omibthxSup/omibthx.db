@@ -1,0 +1,79 @@
+record(bo, "$(P)SIM")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+    field(VAL, "$(RECSIM=0)")
+    field(PINI, "YES")
+}
+
+record(bo, "$(P)DISABLE")
+{
+    field(DESC, "Disable comms")
+    field(PINI, "YES")
+    field(VAL, "$(DISABLE=0)")
+    field(OMSL, "supervisory")
+    field(ZNAM, "COMMS ENABLED")
+    field(ONAM, "COMMS DISABLED")
+}
+
+record(ai, "$(P)HUMIDITY")
+{
+	field(DESC, "Humidity readback")
+    field(EGU, "%")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@omibthx.proto getHumidity $(PORT)")
+    field(PREC, "2")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:HUMIDITY")
+    field(SDIS, "$(P)DISABLE")
+}
+
+record(ai, "$(P)TEMP")
+{
+    field(DESC, "Temperature readback")
+    field(EGU, "C")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@omibthx.proto getTemperature $(PORT)")
+    field(PREC, "2")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:TEMP")
+    field(SDIS, "$(P)DISABLE")
+}
+
+record(ai, "$(P)PRESSURE")
+{
+    field(DESC, "Pressure readback")
+    field(EGU, "mbar")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@omibthx.proto getPressure $(PORT)")
+    field(PREC, "2")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:PRESSURE")
+    field(SDIS, "$(P)DISABLE")
+}
+
+record(ai, "$(P)DEWPOINT")
+{
+    field(DESC, "Dew point readback")
+    field(EGU, "C")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@omibthx.proto getDewpoint $(PORT)")
+    field(PREC, "2")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:DEWPOINT")
+    field(SDIS, "$(P)DISABLE")
+}

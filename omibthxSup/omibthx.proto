@@ -1,0 +1,21 @@
+Terminator = CR;
+
+getHumidity {
+    out "*SRH2";
+    in "%f";
+}
+
+getTemperature {
+    out "*SRTC";
+    in "%f";
+}
+
+getPressure {
+    out "*SRHb";
+    in "%f";
+}
+
+getDewpoint {
+    out "*SRDC2";
+    in "%f";
+}
